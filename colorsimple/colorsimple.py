@@ -61,7 +61,7 @@ def hsv_to_hex(h, s, v):
 
 
 
-def color_species(items, s = 50, v = 100, hexsymble = '#'):
+def color_species(items, s = 50, v = 100, hexsym = '#'):
     ''' 
     '''
     assert len(set(items)) == len(items), \
@@ -76,7 +76,7 @@ def color_species(items, s = 50, v = 100, hexsymble = '#'):
     # Assign color to each item...
     color_dict = {}
     for i, item in enumerate(items): 
-        color_dict[item] = hexsymble + hsv_to_hex(i * div, s, v)
+        color_dict[item] = hexsym + hsv_to_hex(i * div, s, v)
 
     return color_dict
 
