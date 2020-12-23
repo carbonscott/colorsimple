@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# colorsimple/__init__.py
 
+version = "0.1.3"
 
 def rgb_to_hex(r, g, b):
     ''' Convert rgb to hex code.
@@ -109,5 +109,4 @@ def color_table(color_dict):
     gp("exit")
 
     return None
-
 
