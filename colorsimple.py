@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import colorsys
-
 
 def rgb_to_hex(r, g, b):
     ''' Convert rgb to hex code.
@@ -41,6 +39,8 @@ def hsv_to_hex(h, s, v):
         s (saturation): [0, 100]
         v (value)     : [0, 100]
     '''
+    from colorsys import hsv_to_rgb
+
     # Exit the program upon illegal input
     assert 0 <= h <= 360, f"h (hue) value out of range (0-360)."
     assert 0 <= s <= 100, f"s (saturation) value out of range (0-100)."
@@ -50,7 +50,7 @@ def hsv_to_hex(h, s, v):
     h /= 360
     s /= 100
     v /= 100
-    r, g, b = colorsys.hsv_to_rgb(h, s, v)
+    r, g, b = hsv_to_rgb(h, s, v)
     r, g, b = ( round(i * 255) for i in (r, g, b) )
 
     # Convert rgb to hex...
