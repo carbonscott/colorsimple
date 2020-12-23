@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="colorsimple",
-    version="0.1.2",
+    version="0.1.3",
     author="Cong Wang",
     author_email="wangimagine@gmail.com",
     description="A simple package to facilitate manipulation of colors.",
