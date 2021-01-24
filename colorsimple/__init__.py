@@ -61,6 +61,16 @@ def hsv_to_hex(h, s, v):
 
 
 
+def hex_to_rgb(h):
+    ''' Reference: https://stackoverflow.com/questions/29643352/converting-hex-to-rgb-value-in-python
+
+        e.g. hex_to_rgb('ffffff') returns (255, 255, 255)
+    '''
+    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+
+
+
+
 def color_species(items, s = 50, v = 100, hexsym = '#'):
     ''' 
     '''
