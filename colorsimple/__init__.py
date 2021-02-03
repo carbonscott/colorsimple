@@ -71,7 +71,7 @@ def hex_to_rgb(h):
 
 
 
-def color_species(items, s = 50, v = 100, hexsym = '#', b = 0, e = 360):
+def color_species(items, s = 50, v = 100, hexsym = '#', b = 0, e = 360, clockwise = False):
     ''' 
     '''
     assert len(set(items)) == len(items), \
@@ -86,9 +86,11 @@ def color_species(items, s = 50, v = 100, hexsym = '#', b = 0, e = 360):
     # Assign color to each item...
     # Hooray, dictionary follows insertion order in Python3.6 or later
     # Refer to https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6
+    d = 1.0    # Couterclockwise by default
+    if clockwise: d *= -1.0
     color_dict = {}
     for i, item in enumerate(items): 
-        h = b + i * div
+        h = b + d * i * div
         while h < 0: h += 360
         while h > 360: h -= 360
         color_dict[item] = hexsym + hsv_to_hex(h, s, v)
