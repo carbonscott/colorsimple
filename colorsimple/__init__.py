@@ -88,7 +88,10 @@ def color_species(items, s = 50, v = 100, hexsym = '#', b = 0, e = 360):
     # Refer to https://stackoverflow.com/questions/39980323/are-dictionaries-ordered-in-python-3-6
     color_dict = {}
     for i, item in enumerate(items): 
-        color_dict[item] = hexsym + hsv_to_hex(b + i * div, s, v)
+        h = b + i * div
+        while h < 0: h += 360
+        while h > 360: h -= 360
+        color_dict[item] = hexsym + hsv_to_hex(h, s, v)
 
     return color_dict
 
