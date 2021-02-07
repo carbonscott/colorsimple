@@ -81,7 +81,7 @@ def color_species(items, s = 50, v = 100, hexsym = '#', b = 0, e = 360, clockwis
     num = len(items)
 
     # Divide the color palette...
-    div = int((e - b) / num)
+    div = abs(int((e - b) / num))
 
     # Assign color to each item...
     # Hooray, dictionary follows insertion order in Python3.6 or later
