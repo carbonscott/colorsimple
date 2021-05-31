@@ -100,25 +100,28 @@ def color_species(items, s = 50, v = 100, hexsym = '#', b = 0, e = 360, clockwis
 
 
 
-def color_table(color_dict):
+def color_table(color_dict, width = 3.5, height = 2.62, keyspacing = 1.0):
     import GnuplotPy3
     gp = GnuplotPy3.GnuplotPy3()
 
-    gp( "set terminal postscript eps  size 3.5, 2.62 \\")
-    gp( "                             enhanced color \\")
-    gp( "                             font 'Helvetica,14' \\")
-    gp( "                             linewidth 2")
+    gp(f"set terminal postscript eps  size {width}, {height} \\")
+    gp(f"                             enhanced color \\")
+    gp(f"                             font 'Helvetica,14' \\")
+    gp(f"                             linewidth 1")
     gp(f"set output 'color_table.eps'")
     gp("set xrange [1:2]")
     gp("set yrange [1:2]")
     gp("unset border")
     gp("unset xtics")
     gp("unset ytics")
+    gp(f"set key spacing {keyspacing}")
 
     gp("plot \\")
-    for n, c in color_dict.items():
-        gp(f"'-' using 1:2 with points pointtype 7 linecolor rgb '{c}' title '{n}',\\")
-    gp("")
+    for _, vplot in color_dict.items():
+        plotstyle = vplot["style"]
+        plotentry = vplot["entry"]
+        gp(f"'-' {plotstyle}, \\")
+    gp(" ")
 
     for i in range(len(color_dict)):
         gp(f"0 0")
