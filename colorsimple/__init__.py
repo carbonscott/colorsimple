@@ -130,3 +130,38 @@ def color_table(color_dict, width = 3.5, height = 2.62, keyspacing = 1.0):
 
     return None
 
+
+
+
+def linear_gradient(start_hex, finish_hex="FFFFFF", n=10):
+    ''' Disclaimer: this function is a rip-off of Ben Southgates' 
+        implementation.  
+
+        Reference: https://bsouthga.dev/posts/color-gradients-with-python
+
+        > returns a gradient list of (n) colors between
+        > two hex colors. start_hex and finish_hex
+        > should be the full six-digit color string,
+        > inlcuding the number sign ("#FFFFFF") 
+    '''
+
+    # Starting and ending colors in RGB form...
+    s = hex_to_rgb(start_hex)
+    f = hex_to_rgb(finish_hex)
+
+    # Initilize a list of the output colors with the starting color...
+    rgb_list = [s]
+
+    # Calcuate a color at each evenly spaced value of t from 1 to n...
+    for t in range(1, n):
+
+        # Interpolate RGB vector for color at the current value of t...
+        curr_vector = [
+            int(s[j] + (float(t)/(n-1))*(f[j]-s[j]))
+            for j in range(3)
+        ]
+
+        # Add it to our list of output colors...
+        rgb_list.append(curr_vector)
+
+    return [ rgb_to_hex(*i) for i in rgb_list ]
